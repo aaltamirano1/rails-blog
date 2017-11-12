@@ -11,19 +11,16 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :post_title %>
+  <div class="field form-group">
+    <%= form.text_field :title, id: :post_title, placeholder: 'Title', class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= form.label :author %>
-    <%= form.text_field :author, id: :post_author %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
   </div>
 
-  <div class="field">
-    <%= form.label :blog_entry %>
-    <%= form.text_area :blog_entry, id: :post_blog_entry %>
+  <div class="field form-group">
+    <%= form.text_area :blog_entry, placeholder: "Tell us something...", id: :post_blog_entry, class: 'form-control' %>
   </div>
 
   <div class="actions">

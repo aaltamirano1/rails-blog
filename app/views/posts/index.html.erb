@@ -7,12 +7,13 @@
         <div class="panel-heading">
           <h3><%= post.title %></h3>
           <p>By <%= post.author %></p>
+          <p>On <%= post.created_at.strftime('%B %e, %Y at %l:%M %p') %>
         </div>
         <div class="panel-body">
             <p><%= post.blog_entry %></p>
         </div>
         <div class="panel-footer">
-            <a><%= link_to 'Show', post, class: 'btn btn-primary', :style=>'color:white' %></a>
+            <a><%= link_to 'Comments', post, class: 'btn btn-primary', :style=>'color:white' %></a>
             <a><%= link_to 'Edit', edit_post_path(post), class: 'btn btn-warning', :style=>'color:white' %></a>
             <a><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', :style=>'color:white' %></a>
         </div>
@@ -20,5 +21,5 @@
       <br>
     <% end %>
 
-<a class='btn btn-success' style="color:white;" href="/posts/new"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New</a>
+<a id='new_post' class='btn btn-success' style="color:white;" href="/posts/new"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New</a>
 
