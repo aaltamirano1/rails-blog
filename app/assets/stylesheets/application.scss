@@ -16,15 +16,35 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
+
+.navbar{
+	padding: 0 10px;
+	margin-bottom: 0;
+	opacity: .9;
+}
 .dropdown{
 	display: inline-block;
 	margin-top: 7px;
 }
 img{
-	border-radius: 3px;
-	margin: 4px 10px 0 0;
+	border-radius: 5px;
+	margin: 7px 10px 0 0;
 }
+.jumbotron{
+	background-color: #2C3E50;
+	background: url('/assets/atl.jpg') no-repeat top center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 
+  height: 300px;
+	color: white;
+	margin: 50px 0 30px 0;
+}
 #paginate{
 	margin-left: 45%;
+}
+#new_post{
+	margin-bottom: 30px;
 }

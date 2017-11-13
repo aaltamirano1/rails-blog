@@ -9,8 +9,8 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-default">
-      <div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
       <%= link_to "Home", root_path, class: "btn btn-primary", :style=>'color:white' %>
       
       <% if user_signed_in? %>
@@ -20,16 +20,25 @@
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><%= link_to "My Posts", user_posts_path(name: current_user.username) %></li>
             <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
             <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
           </ul>
         </div>
-        <%= image_tag current_user.avatar.url, class: 'pull-right', :style=>'height:40px' %>
+        <%= image_tag current_user.avatar.url, class: 'pull-right', :style=>'height:34px' %>
 
       <% end %>
-      
-      </div>
+    </div>
     </nav>
+
+    <div class="jumbotron">
+      <div class="container">
+        <h1>ATL Coder</h1>
+        <p>...</p>
+      </div>
+    </div>
+
+
   	<div class="container">
 	    <%= yield %>
 	  </div>

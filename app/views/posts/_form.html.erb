@@ -15,10 +15,6 @@
     <%= form.text_field :title, id: :post_title, placeholder: 'Title', class: 'form-control' %>
   </div>
 
-  <div class="field form-group">
-    <%= form.text_field :author, id: :author, placeholder: 'Author', class: 'form-control' %>
-  </div>
-
   <div class="field">
     <%= form.hidden_field :user_id, value: current_user.id %>
   </div>
@@ -28,6 +24,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Create Post', :class => 'btn btn-primary' %>
   </div>
 <% end %>
