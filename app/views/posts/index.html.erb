@@ -6,11 +6,11 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3><%= post.title %></h3>
-          <p>By <%= post.author %></p>
-          <p>On <%= post.created_at.strftime('%B %e, %Y at %l:%M %p') %>
+          <p>By <%= link_to post.user.username, user_posts_path(name: post.user.username) %></p>
+          <p>On <%= post.created_at.strftime('%B %e, %Y at %l:%M %p') %> </p>
         </div>
         <div class="panel-body">
-            <p><%= post.blog_entry %></p>
+            <p><%= post.blog_entry.html_safe %></p>
         </div>
         <div class="panel-footer">
             <a><%= link_to 'Comments', post, class: 'btn btn-primary', :style=>'color:white' %></a>
@@ -22,4 +22,8 @@
     <% end %>
 
 <a id='new_post' class='btn btn-success' style="color:white;" href="/posts/new"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New</a>
+
+<div id='paginate'>
+<%= paginate @posts %>
+</div>
 

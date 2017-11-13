@@ -3,10 +3,10 @@
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h1><%= @post.title %></h1>
-			<p>by <%= @post.author %></p>
+			<p>by <%= link_to @post.user.username, user_posts_path(name: @post.user.username) %></p>
 		</div>
 		<div class="panel-body">
-			<p><%= @post.blog_entry %></p>
+			<p><%= @post.blog_entry.html_safe %></p>
 			<%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-primary', :style=>'color:white' %>
 			<%= link_to 'Back', posts_path, class: 'btn btn-primary', :style=>'color:white' %>
 		</div>
@@ -15,8 +15,12 @@
 		</div>
 		<% @post.comments.each do |comment| %>
 			<div class="panel-footer">
-				<h4><%= comment.user.username %></h4>
-				<p><%= comment.comment_entry %></p>
+				<div class='comment-user-div'>
+					<%= image_tag comment.user.avatar.url %>
+					<h4><strong><%= link_to comment.user.username, user_posts_path(name: comment.user.username) %> said...</strong></h4>
+				</div>
+				<hr>
+				<p><%= comment.comment_entry.html_safe %></p>
 				<p><%= link_to "Edit Comment", edit_comment_path(id: comment.id, post_id:  @post.id), class: "btn btn-warning" %>
 				<%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></p>
 				<p>Created on <%= comment.created_at.strftime("%B %e, %Y at %l:%M %p") %></p>

@@ -24,7 +24,7 @@
             <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
           </ul>
         </div>
-
+        <%= image_tag current_user.avatar.url, class: 'pull-right', :style=>'height:40px' %>
 
       <% end %>
       
