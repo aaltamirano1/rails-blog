@@ -4,7 +4,6 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3><%= post.title %></h3>
-          <p>By <%= link_to post.user.username, user_posts_path(name: post.user.username) %></p>
           <p>On <%= post.created_at.strftime('%B %e, %Y at %l:%M %p') %> </p>
         </div>
         <div class="panel-body">
@@ -12,7 +11,7 @@
         </div>
         <div class="panel-footer">
             <a><%= link_to 'Comments', post, class: 'btn btn-primary', :style=>'color:white' %></a>
-          <% if post.user_id == current_user.id %>
+          <% if current_user.id == 1 %>
             <a><%= link_to 'Edit', edit_post_path(post), class: 'btn btn-warning', :style=>'color:white' %></a>
             <a><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', :style=>'color:white' %></a>
           <% end %>
@@ -21,8 +20,9 @@
       <br>
     <% end %>
 
-<a id='new_post' class='btn btn-success' style="color:white;" href="/posts/new"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New</a>
-
+<% if current_user.id == 1 %>
+  <a id='new_post' class='btn btn-success' style="color:white;" href="/posts/new"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New</a>
+<% end %>
 <div id='paginate'>
 <%= paginate @posts %>
 </div>

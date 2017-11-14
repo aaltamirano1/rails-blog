@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Events</h1>
+
+<table>
+  <thead class="panel panel-primary">
+    <tr class="panel-heading">
+      <th style="padding-left: 10px">Date</th>
+      <th>Name</th>
+      <th>Cost</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td style="padding-left: 10px"><%= event.date.strftime('%B %e %Y') %></td>
+        <td><a target="_blank" href=<%= event.link %>><%= event.name %></a></td>
+        <td><%= event.cost %></td>
+        <% if current_user.id == 1 %>
+          <td><%= link_to 'Edit', edit_event_path(event), class: "btn btn-warning", :style=>'color:white' %></td>
+          <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", :style=>'color:white' %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if current_user.id == 1 %>
+  <a id='new_event' class='btn btn-success' style="color:white;" href="/events/new"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Event</a>
+<% end %>

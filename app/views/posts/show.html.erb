@@ -3,11 +3,10 @@
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h1><%= @post.title %></h1>
-			<p>by <%= link_to @post.user.username, user_posts_path(name: @post.user.username) %></p>
 		</div>
 		<div class="panel-body">
 			<p><%= @post.blog_entry.html_safe %></p>
-			<% if @post.user_id == current_user.id %> 
+			<% if current_user.id == 1 %> 
 				<%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-primary', :style=>'color:white' %>
 				<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', :style=>'color:white' %>
 			<% end %>
